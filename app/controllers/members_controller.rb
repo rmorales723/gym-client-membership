@@ -1,13 +1,9 @@
 class MembersController < ApplicationController
-    before_action :set_member, only: [:show, :update, :destroy]
+     before_action :set_member, only: [:show, :update, :destroy]
     
 
     def index
-        if params[:id]
-            @member = Member.where(id: params[:id])
-        else
-            @member = Member.all
-        end
+        @member = Member.all
             render json: @member, status: :ok
     end
 
@@ -16,16 +12,13 @@ class MembersController < ApplicationController
     end
 
     def create
-        byebug
-        member = set_member
-        member = Member.create!(member_params)
+        member = current_gym.members.create!(member_params)
         render json: member, status: :created
-
     end
     
 
     def update
-       @member.update!(gym_params)
+       @member.update!(member_params)
        render json: @member, status: :accepted
     end
     
@@ -37,10 +30,10 @@ class MembersController < ApplicationController
     private
 
     def member_params
-        params.require(:member).permit(:name, :number, :address)
+        params.permit(:name, :number, :address)
     end
 
     def set_member
-        @member = Member.find_by(id: params[:id])
+         @member = Member.find(params[:id])
     end
 end

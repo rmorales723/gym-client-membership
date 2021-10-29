@@ -17,8 +17,8 @@ class ApplicationController < ActionController::API
 
   private 
 
-  def current_user
-    Gym.first
+  def current_gym
+    @gym = Gym.first
   end
 end
 
