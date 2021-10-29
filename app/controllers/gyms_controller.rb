@@ -33,6 +33,6 @@ class GymsController < ApplicationController
     end
 
     def set_gym
-        @gym = Gym.all
+        @gym = Gym.first
     end
 end
