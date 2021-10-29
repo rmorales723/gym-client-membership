@@ -29,10 +29,10 @@ class GymsController < ApplicationController
     private
 
     def gym_params
-        params.permit(:name, :location, :number)
+        params.require(:gym).permit(:user_id, :name, :number, :address)
     end
 
     def set_gym
-        @gym = gym_params.Gym.first
+        @gym = Gym.all
     end
 end
