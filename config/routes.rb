@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   
   
   resources :members
-  resource :gym 
+  resource :gym
 
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"

@@ -1,11 +1,7 @@
 import './App.css';
 import { useState, useEffect } from "react";
 import { Switch, Route } from "react-router-dom";
-import Gym from "./Gyms";
-import Login from "./Login";
-import Member from "./Member";
-import Members from "./Members";
-import NewMemberForm from "./NewMemberForm";
+
 
 function App() {
   const [user, setUser] = useState(null);
@@ -28,18 +24,18 @@ function App() {
 
   return (
     <div className="App">
-      <Header user={user} onLogout={handleLogout} />
-      <Switch>
-        <Route exact path="/members/:id">
-          <Member />
-        </Route>
-        <Route exact path="/login">
-          <Login onLogin={handleLogin} />
+      {/* <User user={user} onLogout={handleLogout} /> */}
+         <Switch>
+          <Route exact path="/members/:id">
+          {/* <Member /> */}
+          </Route>
+          <Route exact path="/login">
+          {/* <Login Login={handleLogin} /> */}
         </Route>
         <Route exact path="/">
-          <Home />
+          {/* <Members/> */}
         </Route>
-      </Switch>
+        </Switch>
     </div>
   );
 }

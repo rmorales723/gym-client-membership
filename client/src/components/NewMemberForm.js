@@ -1,4 +1,5 @@
 import React from 'react'
+import Members from "./Members"
 
 
 class NewMemberForm extends React.Component {
