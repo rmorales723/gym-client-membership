@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import { useState } from "react";
 
 function Login({ onLogin }) {
     const [username, setUsername] = useState("");
@@ -18,6 +18,8 @@ function Login({ onLogin }) {
   
     return (
       <form onSubmit={handleSubmit}>
+          <h3>Login With Username</h3>
+      <label htmlFor="username">Username: </label>
         <input
           type="text"
           value={username}
@@ -28,4 +30,4 @@ function Login({ onLogin }) {
     );
   } 
 
-  export default LogIn;
+  export default Login;

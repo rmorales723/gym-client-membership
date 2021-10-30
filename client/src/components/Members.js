@@ -49,7 +49,7 @@ class Members extends React.Component {
     renderMembers = () => {
         return (
          <div>
-                {this.state.members.map(({id, name, number, address ,age, gym_id}) => 
+                {this.state.members.map(({id, name, number, address, gym_id}) => 
                     <Member 
                         key={id}
                         deleteMember={this.deleteMember}
