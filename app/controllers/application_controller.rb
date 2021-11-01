@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::API
   include ActionController::Cookies
+  before_action :authorized
   rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_error
   rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_error
 
@@ -15,11 +16,14 @@ class ApplicationController < ActionController::API
     @member = Member.find(params[:id])
   end
 
-  private 
+  def authorized
+    return render json:{error: "Not Authorized"}, status: :unauthorized
+    unless session.include? :user_id
+  end
 
   def current_gym
-    @gym = Gym.first
+     Gym.first
   end
 end
 
-
+end

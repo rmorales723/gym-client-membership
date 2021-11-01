@@ -1,65 +1,53 @@
-import './App.css';
-import { useState, useEffect } from "react";
-import { Switch, Route } from "react-router-dom";
+import React, { useState, useEffect } from 'react'
+import AuthenticatedApp from './components/AuthenticatedApp'
+import UnauthenticatedApp from './components/UnauthenticatedApp'
+import { BrowserRouter as Router } from 'react-router-dom'
 
 
 function App() {
-  const [user, setUser] = useState(null);
+  const [currentUser, setCurrentUser] = useState({
+    "id": 1,
+    "name": "Krank",
+    "number": "551-358-0500",
+    "address": "60 Colombus Ave",
+    "email": "mike@krank.com",
+    "user_id": null,
+    "password_digest": null
+    })
+  const [authChecked, setAuthChecked] = useState(true)
 
-  useEffect(() => {
-    fetch("/me").then((response) => {
-      if (response.ok) {
-        response.json().then((user) => setUser(user));
-      }
-    });
-  }, []);
+  // useEffect(() => {
+  //   fetch('/me', {
+  //     credentials: 'include'
+  //   })
+  //     .then(res => {
+  //       if (res.ok) {
+  //         res.json().then((gym) => {
+  //           setCurrentUser(gym)
+  //           setAuthChecked(true)
+  //         })
+  //       } else {
+  //         setAuthChecked(true)
+  //       }
+  //     })
+  // }, [])
 
-  function handleLogin(user) {
-    setUser(user);
-  }
-
-  function handleLogout() {
-    setUser(null);
-  }
-
+  if(!authChecked) { return <div></div>}
   return (
-    <div className="App">
-      {/* <User user={user} onLogout={handleLogout} /> */}
-         <Switch>
-          <Route exact path="/members/:id">
-          {/* <Member /> */}
-          </Route>
-          <Route exact path="/login">
-          {/* <Login Login={handleLogin} /> */}
-        </Route>
-        <Route exact path="/">
-          {/* <Members/> */}
-        </Route>
-        </Switch>
-    </div>
-  );
+    <Router>
+      {currentUser ? (
+          <AuthenticatedApp
+            setCurrentUser={setCurrentUser}
+            currentUser={currentUser}
+          />
+        ) : (
+          <UnauthenticatedApp
+            setCurrentUser={setCurrentUser}
+          />
+        )
+      }
+    </Router>
+  )
 }
 
 export default App;
-
-
-// function App() {
-//   return (
-//     <div className="App">
-//       <header className="App-header">
-//         <img src={logo} className="App-logo" alt="logo" />
-//         <p>
-//           Edit <code>src/App.js</code> and save to reload.
-//         </p>
-//         <a
-//           className="App-link"
-//           href="https://reactjs.org"
-//           target="_blank"
-//           rel="noopener noreferrer"
-//         >
-//           Learn React
-//         </a>
-//       </header>
-//     </div>
-//   );
-// }

@@ -8,9 +8,9 @@
 Gym.destroy_all
 Member.destroy_all
 
-Gym.create!(name: "Krank", number:"551-358-0500", address: "60 Colombus Ave", email: "mike@krank.com")
-Gym.create!(name: "Base", number:"732-209-2376", address: "120 Rockaway Pkwy", email: "steve@base.com")
-Gym.create!(name: "WBG", number:"201-495-1310", address: "369 Broadway Ave", email: "jay@wbg.com")
+Gym.create!(username: "rob1", password: "password", name: "Krank", number:"551-358-0500", address: "60 Colombus Ave", email: "mike@krank.com")
+Gym.create!(username: "rob2", password: "password", name: "Base", number:"732-209-2376", address: "120 Rockaway Pkwy", email: "steve@base.com")
+Gym.create!(username: "rob3", password: "password", name: "WBG", number:"201-495-1310", address: "369 Broadway Ave", email: "jay@wbg.com")
 
 Gym.first.members.create!(name:"Sarah", number:"917-386-6955", address:"270 Marin")
 Gym.first.members.create!(name:"Zak", number:"917-477-382", address:"1165 54 st")

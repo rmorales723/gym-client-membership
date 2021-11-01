@@ -11,8 +11,6 @@ class Member extends Component {
                 <h2>{this.props.name}</h2>
                 <p>Name:{this.props.number}</p>
                 <p>AGE: {this.props.address}</p>
-                
-                <img className="member-img" width="100%" src={this.props.img_url} alt=" " />
                     
                     <div class="container">
                     <div class="center">

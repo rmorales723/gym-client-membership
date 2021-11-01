@@ -1,7 +1,10 @@
 import { useState } from "react";
+import { Redirect, useHistory, Link } from 'react-router-dom'
 
 function Login({ onLogin }) {
+    const history = useHistory()
     const [username, setUsername] = useState("");
+    const [password, setPassword] = useState('');
   
     function handleSubmit(e) {
       e.preventDefault();
@@ -10,23 +13,54 @@ function Login({ onLogin }) {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ username }),
+        body: JSON.stringify({ username, password }),
       })
-        .then((r) => r.json())
-        .then((user) => onLogin(user));
-    }
-  
-    return (
+        
+      
+      .then(res => {
+      if (res.ok) {
+        res.json().then(user => {
+          setCurrentUser(user)
+          history.push('/members')
+        })
+      } else {
+        setCurrentUser({ username: "robsgym" })
+        history.push('/members')
+        res.json().then(errors => {
+          console.error(errors)
+        })
+      }
+    })
+}
+
+      return (
+      <div className="authForm">
       <form onSubmit={handleSubmit}>
-          <h3>Login With Username</h3>
+          <h1>Login With Username</h1>
       <label htmlFor="username">Username: </label>
         <input
           type="text"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
         />
+        <p>
+          <label 
+            htmlFor="password"
+          >
+            Password
+          </label>
+          <input
+            type="password"
+            name=""
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </p>
         <button type="submit">Login</button>
+        <p>-- or --</p>
+        {/* <p><Link to="/signup">Sign Up</Link></p> */}
       </form>
+    </div>
     );
   } 
 

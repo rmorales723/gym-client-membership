@@ -12,7 +12,7 @@ class NewMemberForm extends React.Component {
     };
 
     componentDidMount() {
-        fetch("http://localhost:3000/gym")
+        fetch("http://localhost:3000/gyms")
             .then(res => res.json())
             .then(gym => this.setState({ gym }));
     };
@@ -41,16 +41,16 @@ class NewMemberForm extends React.Component {
 
     handleOnSubmit = (event) => {
         event.preventDefault();
-        fetch("http://localhost:3000/members", this.addmember())
+        fetch("http://localhost:3000/member/new", this.addmember())
         .then(res => res.json())
-        .then((dogs => this.props.history.push("/members"))
+        .then((dogs => this.props.history.push("/member"))
         )
         
     }
 
 
     render() {
-        console.log(this.state.gym)
+        console.log(this.state.gyms)
     return(
         <>
         <button button class="btn danger" onClick={() => this.props.history.goBack()}>Back</button>
@@ -59,7 +59,7 @@ class NewMemberForm extends React.Component {
             <select value = {this.state.gym_id} onChange={(e) =>this.setState({gym_id:e.target.value})}>
             {this.state.gym.map(s => {
                 return (
-                    <option value={s.id}>{s.location}</option>
+                    <option value={g.id}>{g.address}</option>
                 )
                 })}
             </select>

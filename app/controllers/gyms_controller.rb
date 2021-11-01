@@ -1,14 +1,21 @@
 class GymsController < ApplicationController
     before_action :set_gym, only: [:show, :update, :destroy]
 
+    
     def index
         gym = Gym.all
         render json: gym, status: :ok
     end
 
     def show
-        render json: @gym, status: :ok
+        # gym = Gym.find_by(id: session[:user_id])
+        if current_gym
+          render json: current_gym
+        else
+          render json: { error: "Not authorized" }, status: :unauthorized
+        end
     end
+
 
     def create
         gym = Gym.create!(gym_params)
