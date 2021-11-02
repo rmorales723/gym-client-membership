@@ -11,8 +11,6 @@ function UnauthenticatedApp({ setCurrentUser }) {
     <div>
     <Switch>
       <Route exact path="/login" component={LogIn}/>
-      <Route exact path="/signup" component={SignUp}/>
-      <Route to="/" component={Members}/>
     </Switch>
    
     

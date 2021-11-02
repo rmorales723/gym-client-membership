@@ -8,10 +8,18 @@ class GymsController < ApplicationController
     end
 
     def show
-         gym = Gym.find_by(params[:id])
-        if current_gym
-            login_user
-            render json: current_gym
+        #  gym = Gym.find_by(params[:id])
+        # if current_gym
+        #     login_user
+        #     render json: current_gym
+        # else
+        #   render json: { error: "Not authorized" }, status: :unauthorized
+        # end
+
+        
+        if @gym
+            # login_user
+            render json: @gym, status: :ok
         else
           render json: { error: "Not authorized" }, status: :unauthorized
         end

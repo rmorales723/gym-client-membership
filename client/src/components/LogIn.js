@@ -1,14 +1,14 @@
 import { useState } from "react";
 import { Redirect, useHistory, Link } from 'react-router-dom'
 
-function Login({ setCurrentUser }) {
+function LogIn({ setCurrentUser }) {
     const history = useHistory()
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState('');
   
     function handleSubmit(e) {
       e.preventDefault();
-      fetch("/login", {
+      fetch("/logIn", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -34,7 +34,7 @@ function Login({ setCurrentUser }) {
 }
 
       return (
-      <div className="LoginForm">
+      <div className="LogInForm">
       <form onSubmit={handleSubmit}>
           <h1>Login With Username</h1>
       <label htmlFor="username">Username: </label>
@@ -56,7 +56,7 @@ function Login({ setCurrentUser }) {
             onChange={(e) => setPassword(e.target.value)}
           />
         </p>
-        <button type="submit">Login</button>
+        <button type="submit">LogIn</button>
         <p>-- or --</p>
         <p><Link to="/signup">SignUp</Link></p>
       </form>
@@ -64,4 +64,4 @@ function Login({ setCurrentUser }) {
     );
   } 
 
-  export default Login;
+  export default LogIn;

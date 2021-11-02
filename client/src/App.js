@@ -15,8 +15,8 @@ function App() {
     })
       .then(res => {
         if (res.ok) {
-          res.json().then((gym) => {
-            setCurrentUser(gym)
+          res.json().then((user) => {
+            setCurrentUser(user)
             setAuthChecked(true)
           })
         } else {

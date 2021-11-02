@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 
-function Logout({ user,onLogout }) {
+function LogOut({ user,onLogOut }) {
     function handleLogout() {
-      fetch("/logout", {
+      fetch("/LogOut", {
         method: "DELETE",
-      }).then(() => onLogout());
+      }).then(() => onLogOut());
     }
   
     return (
@@ -12,7 +12,7 @@ function Logout({ user,onLogout }) {
           {user ? (
         <div>
         <p>Welcome, {user.username}!</p>
-        <button onClick={handleLogout}>Logout</button>
+        <button onClick={handleLogOut}>Logout</button>
         </div>
         ) : (
             <Link to="/login">Click Here to Login</Link>
@@ -21,4 +21,4 @@ function Logout({ user,onLogout }) {
     );
   } 
 
-  export default Logout;
+  export default LogOut;
