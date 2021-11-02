@@ -19,12 +19,12 @@ function Login({ setCurrentUser }) {
       
       .then(res => {
       if (res.ok) {
-        res.json().then(user => {
-          setCurrentUser(user)
+        res.json().then(gym => {
+          setCurrentUser(gym)
           history.push('/members')
         })
       } else {
-        setCurrentUser({ username: "" })
+        setCurrentUser({ username: " " })
         history.push('/members')
         res.json().then(errors => {
           console.error(errors)
