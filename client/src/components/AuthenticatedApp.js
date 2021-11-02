@@ -35,10 +35,10 @@ import { Switch, Route, Redirect, NavLink } from 'react-router-dom';
                 <h1>Authorized</h1>
                 <Switch>
                     <Route path="/">
-                        {/* <GroupsContainer /> */}
+                        
                     </Route>
                     <Route path="/">
-                        {/* <EventsContainer /> */}
+                        
                     </Route>
                     <Redirect to="/" />
                 </Switch>

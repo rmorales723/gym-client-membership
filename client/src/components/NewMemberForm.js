@@ -12,9 +12,9 @@ class NewMemberForm extends React.Component {
     };
 
     componentDidMount() {
-        fetch("http://localhost:3000/gyms")
+        fetch("http://localhost:3000/members")
             .then(res => res.json())
-            .then(gym => this.setState({ gym }));
+            .then(gyms => this.setState({ gyms }));
     };
 
     handleOnChange = (event) => {
@@ -41,9 +41,9 @@ class NewMemberForm extends React.Component {
 
     handleOnSubmit = (event) => {
         event.preventDefault();
-        fetch("http://localhost:3000/member/new", this.addmember())
+        fetch("http://localhost:3000/members", this.addMember())
         .then(res => res.json())
-        .then((dogs => this.props.history.push("/member"))
+        .then((members => this.props.history.push("/members"))
         )
         
     }
@@ -57,13 +57,13 @@ class NewMemberForm extends React.Component {
             <form className="new-member-form has-text-weight-bold has-text-black-bis" onSubmit= {this.handleOnSubmit}>
             <label htmlFor = "gym">GYM</label>
             <select value = {this.state.gym_id} onChange={(e) =>this.setState({gym_id:e.target.value})}>
-            {this.state.gym.map(s => {
+            {this.state.gym.map(g => {
                 return (
                     <option value={g.id}>{g.address}</option>
                 )
                 })}
             </select>
-            <p>Add a Member</p>
+                <p>Add a Member</p>
             
                 <label htmlFor = "name">Name</label>
                 <input 
@@ -75,7 +75,7 @@ class NewMemberForm extends React.Component {
                 <label htmlFor = "number">Number</label>
                 <input
                     type="text" 
-                    name="number" 
+                    number="number" 
                     value={this.state.number}
                     onChange={this.handleOnChange}
                 />

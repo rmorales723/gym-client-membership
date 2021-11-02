@@ -9,9 +9,10 @@ class Member extends Component {
         return (
             <div id={this.props.id}className="member has-text-weight-bold ">
                 <h2>{this.props.name}</h2>
-                <p>Name:{this.props.number}</p>
-                <p>AGE: {this.props.address}</p>
-                    
+                <p>NAME: {this.props.name}</p>
+                <p>Number: {this.props.number}</p>
+                <p>ADDRESS: {this.props.address}</p>
+                
                     <div class="container">
                     <div class="center">
                 <button id={this.props.id} class="button is-danger" onClick={this.props.deleteMember}>DELETE</button>

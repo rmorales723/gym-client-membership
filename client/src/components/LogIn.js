@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Redirect, useHistory, Link } from 'react-router-dom'
 
-function Login({ onLogin }) {
+function Login({ setCurrentUser }) {
     const history = useHistory()
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState('');
@@ -24,7 +24,7 @@ function Login({ onLogin }) {
           history.push('/members')
         })
       } else {
-        setCurrentUser({ username: "robsgym" })
+        setCurrentUser({ username: "" })
         history.push('/members')
         res.json().then(errors => {
           console.error(errors)
@@ -34,7 +34,7 @@ function Login({ onLogin }) {
 }
 
       return (
-      <div className="authForm">
+      <div className="LoginForm">
       <form onSubmit={handleSubmit}>
           <h1>Login With Username</h1>
       <label htmlFor="username">Username: </label>
@@ -58,7 +58,7 @@ function Login({ onLogin }) {
         </p>
         <button type="submit">Login</button>
         <p>-- or --</p>
-        {/* <p><Link to="/signup">Sign Up</Link></p> */}
+        <p><Link to="/signup">SignUp</Link></p>
       </form>
     </div>
     );

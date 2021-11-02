@@ -9,7 +9,7 @@ function SignUp({ setCurrentUser }) {
   
     function handleSubmit(e) {
       e.preventDefault();
-      fetch("/signup", {
+      fetch("/SignUp", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -22,9 +22,9 @@ function SignUp({ setCurrentUser }) {
       })
       .then(res => {
         if (res.ok) {
-          res.json().then(user => {
-            setCurrentUser(user)
-            history.push('/groups')
+          res.json().then(gym => {
+            setCurrentUser(gym)
+            history.push('/members')
           })
         } else {
           res.json().then(errors => {
@@ -51,15 +51,8 @@ function SignUp({ setCurrentUser }) {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <label htmlFor="password_confirmation">Confirm Password:</label>
-        <input
-          type="password"
-          id="password_confirmation"
-          value={passwordConfirmation}
-          onChange={(e) => setPasswordConfirmation(e.target.value)}
-        />
-        <button type="submit">Submit</button>
-        <p><Link to="/">Log In</Link></p>
+          <button type="submit">Submit</button>
+          <p><Link to="/">LogIn</Link></p>
       </form>
     );
   } 

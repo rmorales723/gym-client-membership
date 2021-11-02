@@ -1,41 +1,34 @@
 import React, { useState, useEffect } from 'react'
 import AuthenticatedApp from './components/AuthenticatedApp'
 import UnauthenticatedApp from './components/UnauthenticatedApp'
-import { BrowserRouter as Router } from 'react-router-dom'
+import {Router} from 'react-router-dom';
+// import Member from './components/Member'
 
 
 function App() {
-  const [currentUser, setCurrentUser] = useState({
-    "id": 1,
-    "name": "Krank",
-    "number": "551-358-0500",
-    "address": "60 Colombus Ave",
-    "email": "mike@krank.com",
-    "user_id": null,
-    "password_digest": null
-    })
-  const [authChecked, setAuthChecked] = useState(true)
+  const [currentUser, setCurrentUser] = useState(null)
+  const [authChecked, setAuthChecked] = useState(false)
 
-  // useEffect(() => {
-  //   fetch('/me', {
-  //     credentials: 'include'
-  //   })
-  //     .then(res => {
-  //       if (res.ok) {
-  //         res.json().then((gym) => {
-  //           setCurrentUser(gym)
-  //           setAuthChecked(true)
-  //         })
-  //       } else {
-  //         setAuthChecked(true)
-  //       }
-  //     })
-  // }, [])
+  useEffect(() => {
+    fetch('/me', {
+      credentials: 'include'
+    })
+      .then(res => {
+        if (res.ok) {
+          res.json().then((gym) => {
+            setCurrentUser(gym)
+            setAuthChecked(true)
+          })
+        } else {
+          setAuthChecked(true)
+        }
+      })
+  }, [])
 
   if(!authChecked) { return <div></div>}
   return (
-    <Router>
-      {currentUser ? (
+     <Router>
+    {currentUser ? (
           <AuthenticatedApp
             setCurrentUser={setCurrentUser}
             currentUser={currentUser}
@@ -46,7 +39,8 @@ function App() {
           />
         )
       }
-    </Router>
+     </Router>
+    
   )
 }
 

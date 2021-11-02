@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   
   
   resources :members
-  resource :gym
+  resources :gyms
 
   get "/me", to: "gyms#show"
   post "/signup", to: "gyms#create"

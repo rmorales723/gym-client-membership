@@ -8,9 +8,10 @@ class GymsController < ApplicationController
     end
 
     def show
-        # gym = Gym.find_by(id: session[:user_id])
+         gym = Gym.find_by(params[:id])
         if current_gym
-          render json: current_gym
+            login_user
+            render json: current_gym
         else
           render json: { error: "Not authorized" }, status: :unauthorized
         end
@@ -19,6 +20,7 @@ class GymsController < ApplicationController
 
     def create
         gym = Gym.create!(gym_params)
+        # session[:gym_id] = gym_id
         render json: gym, status: :created
     end
     
@@ -36,10 +38,10 @@ class GymsController < ApplicationController
     private
 
     def gym_params
-        params.require(:gym).permit(:user_id, :name, :number, :address)
+        params.permit(:name, :number, :address, :password)
     end
 
     def set_gym
-        @gym = Gym.all
+       @gym = Gym.find(params[:id])
     end
 end
