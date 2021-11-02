@@ -38,11 +38,12 @@ function App() {
           <UnauthenticatedApp
             setCurrentUser={setCurrentUser}
           />
+          
         )
       }
      
      </Router>
-    
+   
   )
 }
 

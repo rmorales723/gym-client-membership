@@ -28,7 +28,7 @@ class ApplicationController < ActionController::API
   end
 
   def current_gym
-     Gym.all
+     Gym.first
   end
 end
 

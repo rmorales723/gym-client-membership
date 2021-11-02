@@ -50,7 +50,7 @@ class GymsController < ApplicationController
     end
 
     def set_gym
-    #    @gym = Gym.find(params[:id])
-    @gym = Gym.first
+        # @gym = Gym.find(params[:id])
+         @gym = Gym.first
     end
 end

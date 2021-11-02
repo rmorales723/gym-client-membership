@@ -75,7 +75,7 @@ class NewMemberForm extends React.Component {
                 <label htmlFor = "number">Number</label>
                 <input
                     type="text" 
-                    number="number" 
+                    name="number" 
                     value={this.state.number}
                     onChange={this.handleOnChange}
                 />
@@ -84,14 +84,6 @@ class NewMemberForm extends React.Component {
                     type="text" 
                     name="address" 
                     value={this.state.address}
-                    onChange={this.handleOnChange}
-                />
-                
-                <label htmlFor = "gym_id">Gym_id</label>
-                <input
-                    type="text" 
-                    name="gym_id" 
-                    value={this.state.gym_id}
                     onChange={this.handleOnChange}
                 />
 
