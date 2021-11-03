@@ -18,17 +18,12 @@ class ApplicationController < ActionController::API
 
   def authorized
     return render json:{error: "Not Authorized"}, status: :unauthorized
-    unless session.include? :user_id
+    unless session.include? :gym_id
     end
   end
 
-  def login_user
-    session[:gym_id] = @gym_id
-
-  end
-
   def current_gym
-     Gym.first
+     Gym.find_by(id:session[:gym_id])
   end
 end
 

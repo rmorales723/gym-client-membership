@@ -3,7 +3,7 @@ class MembersController < ApplicationController
     
 
     def index
-        @member = Member.all
+        @member = current_gym.members
             render json: @member, status: :ok
     end
 

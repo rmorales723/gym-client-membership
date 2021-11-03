@@ -8,7 +8,7 @@ class Member extends Component {
     render() {
         return (
             <div id={this.props.id}className="member has-text-weight-bold ">
-                <h2>{this.props.name}</h2>
+                {/* <h2>{this.props.name}</h2> */}
                 <p>NAME: {this.props.name}</p>
                 <p>Number: {this.props.number}</p>
                 <p>ADDRESS: {this.props.address}</p>

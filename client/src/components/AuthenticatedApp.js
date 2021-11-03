@@ -11,16 +11,15 @@ import NewMemberForm from './NewMemberForm'
                 <nav>
                     {/* <span>Logged in as {currentUser.username} <button onClick={handleLogout}>Logout</button></span> */}
                 </nav>
-                <h1>Authorized</h1>
+                <h1>Authorized: {currentUser.name}</h1>
+                 
                 <Switch>
-                <Route exact path="/members">
-                <Members
-                currentUser ={currentUser}
-                setCurrentUser ={setCurrentUser}/>
-                </Route>
-                
-                
-                <Route exact path="/members/new" component={NewMemberForm}/>
+                    <Route exact path="/members/new" component={NewMemberForm}/>
+                    <Route exact path="/members">
+                        <Members
+                        currentUser ={currentUser}
+                        setCurrentUser ={setCurrentUser}/>
+                    </Route>
                 </Switch>
             </div>
         );

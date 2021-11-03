@@ -1,5 +1,5 @@
 class GymsController < ApplicationController
-    before_action :set_gym, only: [:show, :update, :destroy]
+    before_action :current_gym, only: [:update, :destroy]
 
     
     def index
@@ -8,18 +8,8 @@ class GymsController < ApplicationController
     end
 
     def show
-        #  gym = Gym.find_by(params[:id])
-        # if current_gym
-        #     login_user
-        #     render json: current_gym
-        # else
-        #   render json: { error: "Not authorized" }, status: :unauthorized
-        # end
-
-        
-        if @gym
-            # login_user
-            render json: @gym, status: :ok
+        if current_gym
+           render json: current_gym, status: :ok
         else
           render json: { error: "Not authorized" }, status: :unauthorized
         end
@@ -28,7 +18,7 @@ class GymsController < ApplicationController
 
     def create
         gym = Gym.create!(gym_params)
-        # session[:gym_id] = gym_id
+        session[:gym_id] = gym.id
         render json: gym, status: :created
     end
     

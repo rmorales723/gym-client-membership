@@ -1,30 +1,30 @@
 import React, { useState } from 'react'
-import { useHistory, Link } from 'react-router-dom'
+import { useHistory, Link, withRouter } from 'react-router-dom'
 
-function SignUp({ setCurrentUser }) {
-    const history = useHistory()
-    const [username, setUsername] = useState("");
+function SignUp(props) {
+    // const history = useHistory()
+    const [name, setName] = useState("");
     const [password, setPassword] = useState("");
     const [passwordConfirmation, setPasswordConfirmation] = useState("");
   
     function handleSubmit(e) {
       e.preventDefault();
-      fetch("/SignUp", {
+      fetch("/signup", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          username,
+          name,
           password,
-          password_confirmation: passwordConfirmation,
         }),
       })
       .then(res => {
         if (res.ok) {
           res.json().then(gym => {
-            setCurrentUser(gym)
-            history.push('/members')
+            props.setCurrentUser(gym)
+            // history.push('/members')
+            props.history.push('/members')
           })
         } else {
           res.json().then(errors => {
@@ -41,8 +41,8 @@ function SignUp({ setCurrentUser }) {
         <input
           type="text"
           id="username"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
+          value={name}
+          onChange={(e) => setName(e.target.value)}
         />
         <label htmlFor="password">Password:</label>
         <input
@@ -57,4 +57,4 @@ function SignUp({ setCurrentUser }) {
     );
   } 
 
-  export default SignUp;
+  export default withRouter(SignUp);

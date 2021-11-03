@@ -4,14 +4,21 @@ import LogIn from './LogIn'
 import SignUp from './SignUp'
 import NewMemberForm from './NewMemberForm'
 import Members from './Members'
+import LandingPage from './LandingPage'
 
 
-function UnauthenticatedApp({ setCurrentUser }) {
+function UnauthenticatedApp(props) {
   return (
     <div>
     <Switch>
-      <Route exact path="/" component={"/"}/>
-      <Route exact path="/signup" component={SignUp}/>
+      
+      <Route exact path="/" component={LandingPage}/>
+
+
+      <Route exact path="/signup">
+        <SignUp setCurrentUser={props.setCurrentUser}/>
+      </Route>  
+
     </Switch>
    
     
