@@ -9,6 +9,7 @@ class NewMemberForm extends React.Component {
         name: "",
         number: "",
         address: "",
+        img_url: "",
         gym_id: ""
     };
 
@@ -35,6 +36,7 @@ class NewMemberForm extends React.Component {
                 name: this.state.name,
                 number: this.state.number,
                 address: this.state.address,
+                img_url: this.state.img_url,
                 gym_id: this.state.gym_id
             })
         }
@@ -87,6 +89,13 @@ class NewMemberForm extends React.Component {
                     type="text" 
                     name="address" 
                     value={this.state.address}
+                    onChange={this.handleOnChange}
+                />
+                <label htmlFor = "img_url">Image Url</label>
+                <input
+                    type="text" 
+                    name="img_url" 
+                    value={this.state.img_url}
                     onChange={this.handleOnChange}
                 />
 
