@@ -2,7 +2,7 @@ class SessionsController < ApplicationController
 skip_before_action :authorized, only: :create
 
 def create
-        gym = Gym.find_by(name: params[:name])
+        gym = Gym.find_by(username: params[:username])
     if  gym&.authenticate(params[:password])
         session[:gym_id] = gym.id
         render json: gym, status: :ok

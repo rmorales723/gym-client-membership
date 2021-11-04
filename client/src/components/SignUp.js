@@ -5,6 +5,9 @@ function SignUp(props) {
     // const history = useHistory()
     const [name, setName] = useState("");
     const [password, setPassword] = useState("");
+    const [email, setEmail] = useState("");
+    const [number, setNumber] = useState("");
+    const [address, setAddress] = useState("");
     const [passwordConfirmation, setPasswordConfirmation] = useState("");
   
     function handleSubmit(e) {
@@ -40,7 +43,7 @@ function SignUp(props) {
         <label htmlFor="username">Username:</label>
         <input
           type="text"
-          id="username"
+          id="name"
           value={name}
           onChange={(e) => setName(e.target.value)}
         />
@@ -51,6 +54,28 @@ function SignUp(props) {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
+        <label htmlFor="email">email:</label>
+        <input
+          type="text"
+          id="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+        <label htmlFor="number">Number:</label>
+        <input
+          type="text"
+          id="number"
+          value={number}
+          onChange={(e) => setNumber(e.target.value)}
+        />
+        <label htmlFor="address">Address:</label>
+        <input
+          type="text"
+          id="address"
+          value={address}
+          onChange={(e) => setAddress(e.target.value)}
+        />
+        
           <button type="submit">Submit</button>
           <p><Link to="/">LogIn</Link></p>
       </form>

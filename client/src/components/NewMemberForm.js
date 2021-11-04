@@ -1,4 +1,5 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom';
 import Members from "./Members"
 
 
@@ -52,8 +53,10 @@ class NewMemberForm extends React.Component {
     render() {
         console.log(this.state.gyms)
     return(
-        <>
-        <button button class="btn danger" onClick={() => this.props.history.goBack()}>Back</button>
+        <div>
+        {/*<NavLink to = "/members">Back</NavLink>*/}
+        <a href="/members">Back</a>
+        {/* <button button class="btn danger" onClick={() => this.props.history.goBack()}>Back</button> <a href="/members">Button</a> */}
             <form className="new-member-form has-text-weight-bold has-text-black-bis" onSubmit= {this.handleOnSubmit}>
             <label htmlFor = "gym">GYM</label>
             <select value = {this.state.gym_id} onChange={(e) =>this.setState({gym_id:e.target.value})}>
@@ -92,7 +95,7 @@ class NewMemberForm extends React.Component {
             <div className= "new-member-form-container-container"> </div>
            
 
-        </>
+        </div>
     );
 
 }};

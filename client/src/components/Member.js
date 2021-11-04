@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import NewMemberForm from './NewMemberForm'
+import NewMembers from './NewMemberForm'
 
 
 

@@ -1,30 +1,33 @@
 import React from 'react'
-import { Switch, Route, Redirect } from 'react-router-dom'
+import { Switch, Route, BrowserRouter as Router} from 'react-router-dom'
+import LandingPage from './LandingPage'
 import LogIn from './LogIn'
 import SignUp from './SignUp'
-import NewMemberForm from './NewMemberForm'
-import Members from './Members'
-import LandingPage from './LandingPage'
+// import NewMemberForm from './NewMemberForm'
+// import Members from './Members'
+// import LandingPage from './LandingPage'
 
 
-function UnauthenticatedApp(props) {
+function UnauthenticatedApp(setCurrentUSer) {
   return (
-    <div>
+    <div><Router>
     <Switch>
-      
-      <Route exact path="/" component={LandingPage}/>
+      <Route exact path='/' component={LandingPage}/>
+      <Route exact path="/logIn">
+      <LogIn setCurrentUser={setCurrentUSer} />
+      </Route>
 
 
-      <Route exact path="/signup">
-        <SignUp setCurrentUser={props.setCurrentUser}/>
+      <Route exact path="/signUp">
+        <SignUp setCurrentUser={setCurrentUSer}/>
       </Route>  
 
     </Switch>
-   
+   </Router>
     
     <h1>hello</h1>
     
-    </div>
+    </div >
   )
 }
 

@@ -36,11 +36,11 @@ class GymsController < ApplicationController
     private
 
     def gym_params
-        params.permit(:name, :number, :address, :password)
+        params.permit(:name, :number, :address, :password, :username, :password_confirmation)
     end
 
     def set_gym
-        # @gym = Gym.find(params[:id])
-         @gym = Gym.first
+         @gym = Gym.find_by(id: params[:id])
+        #  @gym = Gym.first
     end
 end

@@ -3,8 +3,7 @@ class MembersController < ApplicationController
     
 
     def index
-        @member = current_gym.members
-            render json: @member, status: :ok
+        render json: current_user.members, status: :ok
     end
 
     def show
@@ -34,6 +33,6 @@ class MembersController < ApplicationController
     end
 
     def set_member
-         @member = Member.find(params[:id])
+         @member = Member.find_by(id: params[:id])
     end
 end
