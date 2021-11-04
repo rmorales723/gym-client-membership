@@ -58,6 +58,7 @@ class Members extends React.Component {
                         number={number}
                         address={address}
                         gym_id={gym_id}
+                        img_url={img_url}
                     />
                 )}
             </div>
