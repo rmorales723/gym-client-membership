@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { Redirect, useHistory, Link } from 'react-router-dom'
 
-function LogOut({ user,onLogOut }) {
-    function handleLogout() {
+function LogOut({ gym,onLogOut }) {
+    function handleLogOut() {
       fetch("/LogOut", {
         method: "DELETE",
       }).then(() => onLogOut());
@@ -10,13 +10,13 @@ function LogOut({ user,onLogOut }) {
   
     return (
       <header>
-          {user ? (
+          {gym ? (
         <div>
-        <p>Welcome, {user.username}!</p>
+        <p>Welcome, {gym.name}!</p>
         <button onClick={handleLogOut}>Logout</button>
         </div>
         ) : (
-            <Link to="/login">Click Here to Login</Link>
+            <Link to="/LogOut">Click Here to LogOut</Link>
         )}
       </header>
     );

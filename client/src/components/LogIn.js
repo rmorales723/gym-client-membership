@@ -36,7 +36,7 @@ function LogIn({ setCurrentUser }) {
       return (
       <div className="LogInForm has-text-weight-bold has-text-danger is-size-4 card">
       <form onSubmit={handleSubmit}>
-          <h1>Log In</h1>
+          <h1></h1>
       <label 
       htmlFor="username">Username</label>
         <input
