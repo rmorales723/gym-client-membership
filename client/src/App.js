@@ -3,6 +3,7 @@ import AuthenticatedApp from './components/AuthenticatedApp'
 import UnauthenticatedApp from './components/UnauthenticatedApp'
 import {BrowserRouter as Router} from 'react-router-dom'
 import LandingPage from './components/LandingPage'
+import Navbar from './components/Navbar'
 // import Member from './components/Member'
 
 
@@ -29,6 +30,7 @@ function App() {
   if(!authChecked) { return <div></div>}
   return (
      <Router>
+       <Navbar/>
     
       {currentUser ? (
           <AuthenticatedApp

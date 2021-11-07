@@ -61,7 +61,7 @@ h2 {
 
 .btn {
   border:3px solid black;
-  background-color: blue;
+  background-color: red;
   color: white;
   padding: 10px 10px;
   font-size: 18px;
@@ -69,7 +69,7 @@ h2 {
 }
 
 input[type=text] {
-  border: 3px solid red;
+  border: 3px solid black;
   border-radius: 4px;
 }
 
@@ -119,7 +119,7 @@ h1 {
 
 .landing-page-container {
   height: 100vh ;
-  background-image: url("https://images.pexels.com/photos/3776144/pexels-photo-3776144.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260");
+  background-image: url("https://images.pexels.com/photos/903171/pexels-photo-903171.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500");
   background-size: cover;
 }
 

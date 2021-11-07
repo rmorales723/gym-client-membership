@@ -3,6 +3,8 @@ import { Switch, Route, BrowserRouter as Router } from 'react-router-dom';
 import LandingPage from './LandingPage';
 import Members from './Members'
 import NewMemberForm from './NewMemberForm'
+import LogOut from './LogOut';
+
  function AuthenticatedApp({ currentUser, setCurrentUser }) {
 
 
@@ -10,9 +12,9 @@ import NewMemberForm from './NewMemberForm'
             <div className="App">
                 <Router>
                 <nav>
-                    {/* <span>Logged in as {currentUser.username} <button onClick={handleLogout}>Logout</button></span> */}
+                {/* <span> Logged in as {currentUser.name} <button onClick={handleLogout}>Logout</button></span> */}
                 </nav>
-                <h1>Authorized: {currentUser.name}</h1>
+                
                  
                 <Switch>
                     <Route exact path="/members/new">

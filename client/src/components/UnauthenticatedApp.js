@@ -21,11 +21,11 @@ function UnauthenticatedApp(setCurrentUSer) {
       <Route exact path="/signUp">
         <SignUp setCurrentUser={setCurrentUSer}/>
       </Route>  
-
-    </Switch>
+      <Route exact path='/*' component={LandingPage}/>
+  </Switch>
    </Router>
     
-    <h1>hello</h1>
+    {/* <h1>hello</h1> */}
     
     </div >
   )

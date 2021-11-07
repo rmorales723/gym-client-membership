@@ -1,11 +1,15 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom';
+import { NavLink, useHistory } from 'react-router-dom';
+import Gyms from './Gyms';
 import Members from "./Members"
 
 
+
 class NewMemberForm extends React.Component {
+
+
     state = {
-        gym : [],
+        gym: [],
         name: "",
         number: "",
         address: "",
@@ -14,23 +18,23 @@ class NewMemberForm extends React.Component {
     };
 
     componentDidMount() {
-        fetch("http://localhost:3000/members")
+        fetch("/members")
             .then(res => res.json())
             .then(gyms => this.setState({ gyms }));
     };
 
     handleOnChange = (event) => {
         this.setState({
-            [event.target.name] : event.target.value
+            [event.target.name]: event.target.value
         });
     };
-    
+
     addMember = () => {
         return {
             method: 'POST',
             headers: {
-                'Content-type' : 'application/json',
-                'Accept' : 'application/json'
+                'Content-type': 'application/json',
+                'Accept': 'application/json'
             },
             body: JSON.stringify({
                 name: this.state.name,
@@ -44,69 +48,70 @@ class NewMemberForm extends React.Component {
 
     handleOnSubmit = (event) => {
         event.preventDefault();
-        fetch("http://localhost:3000/members", this.addMember())
-        .then(res => res.json())
-        .then((members => this.props.history.push("/members"))
-        )
-        
+        fetch("/members", this.addMember())
+            .then(res => res.json())
+            .then((members => console.log(Gyms))
+
+            )
     }
 
 
     render() {
         console.log(this.state.gyms)
-    return(
-        <div>
-        {/*<NavLink to = "/members">Back</NavLink>*/}
-        <a href="/members">Back</a>
-        {/* <button button class="btn danger" onClick={() => this.props.history.goBack()}>Back</button> <a href="/members">Button</a> */}
-            <form className="new-member-form has-text-weight-bold has-text-black-bis" onSubmit= {this.handleOnSubmit}>
-            <label htmlFor = "gym">GYM</label>
-            <select value = {this.state.gym_id} onChange={(e) =>this.setState({gym_id:e.target.value})}>
-            {this.state.gym.map(g => {
-                return (
-                    <option value={g.id}>{g.address}</option>
-                )
-                })}
-            </select>
-                <p>Add a Member</p>
-            
-                <label htmlFor = "name">Name</label>
-                <input 
-                    type="text" 
-                    name="name" 
-                    value={this.state.name}
-                    onChange={this.handleOnChange}
-                />
-                <label htmlFor = "number">Number</label>
-                <input
-                    type="text" 
-                    name="number" 
-                    value={this.state.number}
-                    onChange={this.handleOnChange}
-                />
-                <label htmlFor = "address">Address</label>
-                <input
-                    type="text" 
-                    name="address" 
-                    value={this.state.address}
-                    onChange={this.handleOnChange}
-                />
-                <label htmlFor = "img_url">Image Url</label>
-                <input
-                    type="text" 
-                    name="img_url" 
-                    value={this.state.img_url}
-                    onChange={this.handleOnChange}
-                />
+        return (
+            <div>
+                {/* <NavLink to="/members">Back</NavLink> */}
+                <a href="/members">Back</a>
+                {/* <button button class="btn danger" onClick={() => this.props.history.goBack()}>Back</button> <a href="/members">Button</a> */}
+                <form className="new-member-form has-text-weight-bold has-text-black-bis" onSubmit={this.handleOnSubmit}>
+                    <label htmlFor="gym">GYM</label>
+                    <select value={this.state.gym_id} onChange={(e) => this.setState({ gym_id: e.target.value })}>
+                        {this.state.gym.map(g => {
+                            return (
+                                <option value={g.id}>{g.address}</option>
+                            )
+                        })}
+                    </select>
+                    <p>Add a Member</p>
 
-                <button type="submit">Submit</button>
-            </form>   
-            <div className= "new-member-form-container-container"> </div>
-           
+                    <label htmlFor="name">Name</label>
+                    <input
+                        type="text"
+                        name="name"
+                        value={this.state.name}
+                        onChange={this.handleOnChange}
+                    />
+                    <label htmlFor="number">Number</label>
+                    <input
+                        type="text"
+                        name="number"
+                        value={this.state.number}
+                        onChange={this.handleOnChange}
+                    />
+                    <label htmlFor="address">Address</label>
+                    <input
+                        type="text"
+                        name="address"
+                        value={this.state.address}
+                        onChange={this.handleOnChange}
+                    />
+                    <label htmlFor="img_url">Image Url</label>
+                    <input
+                        type="text"
+                        name="img_url"
+                        value={this.state.img_url}
+                        onChange={this.handleOnChange}
+                    />
 
-        </div>
-    );
+                    <a href="/members"><button type="submit">Submit</button></a>
+                </form>
+                <div className="new-member-form-container-container"> </div>
 
-}};
+
+            </div>
+        );
+
+    }
+};
 
 export default NewMemberForm;

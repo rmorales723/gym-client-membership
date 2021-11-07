@@ -36,9 +36,9 @@ class Members extends React.Component {
             method: "DELETE",
         })
             .then((response) => response.json())
-            .then((data) => {
-                this.setState({ members: [...this.state.members], data })
-            });
+            .then((data) => this.setState({
+                members: [...this.state.members] , data
+            }));
     }
 
 
@@ -69,7 +69,7 @@ class Members extends React.Component {
     render() {
         return (
             <div>
-                <Link class="button is-info" to="/members/new">New Member</Link>
+                <Link class="btn btn-primary" to="/members/new">New Member</Link>
                 <ul>{this.renderMembers()}</ul>
             </div>
         )

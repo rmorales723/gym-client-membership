@@ -38,9 +38,10 @@ function SignUp(props) {
     }
   
     return (
-      <form onSubmit={handleSubmit}>
+      <form className="new-member-form has-text-weight-bold has-text-black-bis list-group" onSubmit={handleSubmit}>
+          
           <h1>Sign Up</h1>
-        <label htmlFor="username">Username:</label>
+        <label htmlFor="name">Name:</label>
         <input
           type="text"
           id="name"
@@ -49,18 +50,18 @@ function SignUp(props) {
         />
         <label htmlFor="password">Password:</label>
         <input
-          type="password"
+          type="text"
           id="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <label htmlFor="email">email:</label>
+        {/* <label htmlFor="email">email:</label>
         <input
           type="text"
           id="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-        />
+        /> */}
         <label htmlFor="number">Number:</label>
         <input
           type="text"
@@ -76,9 +77,11 @@ function SignUp(props) {
           onChange={(e) => setAddress(e.target.value)}
         />
         
-          <button type="submit">Submit</button>
+          <p><button type="submit">Submit</button></p>
+          <p> or </p>
           <p><Link to="/">LogIn</Link></p>
       </form>
+      
     );
   } 
 

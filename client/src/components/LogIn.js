@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Redirect, useHistory, Link } from 'react-router-dom'
 
 function LogIn({ setCurrentUser }) {
-    //const history = useHistory()
+    const history = useHistory()
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState('');
   
@@ -21,7 +21,7 @@ function LogIn({ setCurrentUser }) {
       if (res.ok) {
         res.json().then(gym => {
           setCurrentUser = gym       
-             // history.push('/members')
+         history.push('/members')
         })
       } else {
         setCurrentUser = username
@@ -34,10 +34,11 @@ function LogIn({ setCurrentUser }) {
 }
 
       return (
-      <div className="LogInForm">
+      <div className="LogInForm has-text-weight-bold has-text-danger is-size-4 card">
       <form onSubmit={handleSubmit}>
-          <h1>Login With Username</h1>
-      <label htmlFor="username">Username: </label>
+          <h1>Log In</h1>
+      <label 
+      htmlFor="username">Username</label>
         <input
           type="text"
           value={username}
@@ -47,18 +48,18 @@ function LogIn({ setCurrentUser }) {
           <label 
             htmlFor="password"
           >
-            Password
+            Password:
           </label>
           <input
-            type="password"
-            name=""
+            type="text"
+            // name=""
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
         </p>
-        <button type="submit">LogIn</button>
-        <p>-- or --</p>
-        <p><Link to="/signup">SignUp</Link></p>
+        <button type="submit">Log In</button>
+        <p>or</p>
+        <p><Link to="/signup">Sign Up</Link></p>
       </form>
     </div>
     );
