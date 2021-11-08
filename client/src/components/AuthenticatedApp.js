@@ -1,36 +1,54 @@
 // import './App.css';
-import { Switch, Route, BrowserRouter as Router } from 'react-router-dom';
+import { Switch, Route, BrowserRouter as Router, useHistory} from 'react-router-dom';
 import LandingPage from './LandingPage';
 import Members from './Members'
 import NewMemberForm from './NewMemberForm'
 import LogOut from './LogOut';
+import EditMember from './EditMember';
 
- function AuthenticatedApp({ currentUser, setCurrentUser }) {
+function AuthenticatedApp({ currentUser, setCurrentUser }) {
+    const history = useHistory()
+    const handleLogOut = () => {
+        fetch("/logout", {
+           method: "DELETE" 
+        })
+            .then(() => {
+                setCurrentUser(null)
+                history.push("/")
+            }) 
+        
+    }
 
 
-        return (
-            <div className="App">
-                <Router>
-                <nav>
-                {/* <span> Logged in as {currentUser.name} <button onClick={handleLogout}>Logout</button></span> */}
-                </nav>
-                
-                 
+
+    return (
+
+        <div className="App">
+            <Router>
+                <p>Logged in as {currentUser.name}</p>
+                <nav><button onClick={handleLogOut}>Logout</button></nav>
+
                 <Switch>
                     <Route exact path="/members/new">
-                    <NewMemberForm
-                    currentUser ={currentUser}
-                    setCurrentUser ={setCurrentUser}/>
+                        <NewMemberForm
+                            currentUser={currentUser}
+                            setCurrentUser={setCurrentUser} />
                     </Route>
-                    <Route exact path="/" component={LandingPage}/>
+                    
+                    <Route exact path="/" component={LandingPage} />
                     <Route exact path="/members">
                         <Members
-                        currentUser ={currentUser}
-                        setCurrentUser ={setCurrentUser}/>
+                            currentUser={currentUser}
+                            setCurrentUser={setCurrentUser} />
+                    </Route>
+                    <Route exact path="/members/:id/edit">
+                        <EditMember
+                            currentUser={currentUser}
+                            setCurrentUser={setCurrentUser} />
                     </Route>
                 </Switch>
-                </Router>
-            </div>
-        );
-    }
-    export default AuthenticatedApp;
+            </Router>
+        </div>
+    );
+}
+export default AuthenticatedApp;

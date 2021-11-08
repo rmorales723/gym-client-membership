@@ -49,9 +49,10 @@ class Members extends React.Component {
     renderMembers = () => {
         return (
             <div>
-                {this.state.members.map(({ id, name, number, address, gym_id, img_url }) =>
+                {this.state.members.map(({ id, member, name, number, address, gym_id, img_url }) =>
                     <Member
                         key={id}
+                        member={id}
                         deleteMember={this.deleteMember}
                         id={id}
                         name={name}
@@ -71,6 +72,7 @@ class Members extends React.Component {
             <div>
                 <Link class="btn btn-primary" to="/members/new">New Member</Link>
                 <ul>{this.renderMembers()}</ul>
+        
             </div>
         )
     }

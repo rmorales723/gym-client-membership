@@ -55,13 +55,6 @@ function SignUp(props) {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        {/* <label htmlFor="email">email:</label>
-        <input
-          type="text"
-          id="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        /> */}
         <label htmlFor="number">Number:</label>
         <input
           type="text"

@@ -8,20 +8,20 @@ import SignUp from './SignUp'
 // import LandingPage from './LandingPage'
 
 
-function UnauthenticatedApp(setCurrentUSer) {
+function UnauthenticatedApp(props) {
   return (
     <div><Router>
     <Switch>
-      <Route exact path='/' component={LandingPage}/>
-      <Route exact path="/logIn">
-      <LogIn setCurrentUser={setCurrentUSer} />
+      {/* <Route exact path='/' component={LandingPage}/> */}
+      <Route exact path="/">
+      <LandingPage setCurrentUser={props.setCurrentUser} />
       </Route>
 
 
       <Route exact path="/signUp">
-        <SignUp setCurrentUser={setCurrentUSer}/>
+        <SignUp setCurrentUser={props.setCurrentUser}/>
       </Route>  
-      <Route exact path='/*' component={LandingPage}/>
+      <Route exact path='/*' component={LandingPage}/> 
   </Switch>
    </Router>
     
