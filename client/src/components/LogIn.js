@@ -19,13 +19,13 @@ function LogIn({ setCurrentUser }) {
         if (res.ok) {
           res.json().then((user) => {
 
-            // setCurrentUser(user);
+          //  setCurrentUser(user);
             history.push('/')
           })
 
         } else {
           // setCurrentUser = username
-          //  history.push('/members')
+            history.push('/members')
           res.json().then(errors => errors.error);
         }
       })
@@ -55,7 +55,7 @@ function LogIn({ setCurrentUser }) {
             onChange={(e) => setPassword(e.target.value)}
           />
         </p>
-        <button type="submit">Log In</button>
+        <button type="submit" >Log In</button>
         <p>or</p>
         <p><Link to="/signup">Sign Up</Link></p>
       </form>
