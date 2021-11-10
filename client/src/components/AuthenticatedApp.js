@@ -36,7 +36,7 @@ function AuthenticatedApp({ currentUser, setCurrentUser }) {
                     </Route>
                     
                    
-                    <Route exact path="/members">
+                    <Route exact path="/members" component={Members}>
                         <Members
                             currentUser={currentUser}
                             setCurrentUser={setCurrentUser} />

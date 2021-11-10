@@ -21,7 +21,7 @@ function UnauthenticatedApp(props) {
         <Route exact path="/signUp">
           <SignUp setCurrentUser={props.setCurrentUser} />
         </Route>
-        {/* <Route exact path='/*' component={LandingPage}/>  */}
+        <Route exact path='/*' component={LandingPage}/> 
       </Switch>
    
 
