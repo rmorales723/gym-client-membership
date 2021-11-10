@@ -1,12 +1,14 @@
 import React from 'react'
-import { NavLink, useHistory } from 'react-router-dom';
+import { NavLink, useHistory, withRouter } from 'react-router-dom';
 import Gyms from './Gyms';
 import Members from "./Members"
+import { useState } from "react";
+import { browserHistory } from 'react-router';
+
 
 
 
 class NewMemberForm extends React.Component {
-
 
     state = {
         gym: [],
@@ -46,11 +48,17 @@ class NewMemberForm extends React.Component {
         }
     }
 
+
+
     handleOnSubmit = (event) => {
         event.preventDefault();
         fetch("/members", this.addMember())
             .then(res => res.json())
-            .then((members => console.log(Gyms))
+            .then((members => {
+                this.props.history.push('/members')
+                console.log(Gyms)
+            })
+
 
             )
     }
@@ -114,4 +122,4 @@ class NewMemberForm extends React.Component {
     }
 };
 
-export default NewMemberForm;
+export default withRouter(NewMemberForm);

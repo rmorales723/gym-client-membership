@@ -19,8 +19,8 @@ class Member extends Component {
                     <div class="container">
                     <div class="center">
                 <button id={this.props.id} class="btn btn-danger" onClick={this.props.deleteMember}>DELETE</button>
-                <button class="btn btn-primary" variant="primary">EDIT</button>
-
+                <a class="btn btn-primary" variant="primary" href={`/members/${this.props.id}/edit`}>EDIT</a>
+                
                 {/* <button class="btn btn-danger" href={`/members/${member.id}/edit`}>EDIT</button> */}
                     </div>
                 </div>

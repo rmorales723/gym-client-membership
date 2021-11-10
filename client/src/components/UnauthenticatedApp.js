@@ -1,5 +1,5 @@
 import React from 'react'
-import { Switch, Route, BrowserRouter as Router} from 'react-router-dom'
+import { Switch, Route, BrowserRouter as Router } from 'react-router-dom'
 import LandingPage from './LandingPage'
 import LogIn from './LogIn'
 import SignUp from './SignUp'
@@ -10,23 +10,23 @@ import SignUp from './SignUp'
 
 function UnauthenticatedApp(props) {
   return (
-    <div><Router>
-    <Switch>
-      {/* <Route exact path='/' component={LandingPage}/> */}
-      <Route exact path="/">
-      <LandingPage setCurrentUser={props.setCurrentUser} />
-      </Route>
+    <div>
+      <Switch>
+
+        <Route exact path="/">
+          <LandingPage setCurrentUser={props.setCurrentUser} />
+        </Route>
 
 
-      <Route exact path="/signUp">
-        <SignUp setCurrentUser={props.setCurrentUser}/>
-      </Route>  
-      <Route exact path='/*' component={LandingPage}/> 
-  </Switch>
-   </Router>
-    
-    {/* <h1>hello</h1> */}
-    
+        <Route exact path="/signUp">
+          <SignUp setCurrentUser={props.setCurrentUser} />
+        </Route>
+        {/* <Route exact path='/*' component={LandingPage}/>  */}
+      </Switch>
+   
+
+
+
     </div >
   )
 }

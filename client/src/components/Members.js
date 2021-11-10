@@ -2,6 +2,7 @@ import React from 'react';
 import Member from './Member';
 import NewMemberForm from './NewMemberForm';
 import { Link } from 'react-router-dom';
+import { NavLink, useHistory, withRouter } from 'react-router-dom';
 
 
 
@@ -30,19 +31,23 @@ class Members extends React.Component {
             })
     }
 
-
     deleteMember = (e) => {
         fetch(`/members/${e.target.id}`, {
-            method: "DELETE",
+            method: "DELETE"
         })
-            .then((response) => response.json())
-            .then((data) => this.setState({
-                members: [...this.state.members] , data
-            }));
+        .then((data) => {
+            const filterMembers = this.state.members.filter(member => {
+                console.log(member, "Deleted -----", e.target.id != member.id);
+                return member.id != e.target.id;
+            })
+             return this.setState({
+                members: [...filterMembers], data,
+            })
+        });
+
     }
 
-
-    gym = () => {
+     gym = () => {
         this.state.members.gym.map()
     }
 
@@ -71,12 +76,13 @@ class Members extends React.Component {
         return (
             <div>
                 <Link class="btn btn-primary" to="/members/new">New Member</Link>
+                
                 <ul>{this.renderMembers()}</ul>
-        
+
             </div>
         )
     }
 };
 
 
-export default Members;
+export default withRouter(Members);

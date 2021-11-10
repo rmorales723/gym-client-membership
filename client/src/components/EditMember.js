@@ -9,16 +9,13 @@ function EditMember() {
     const [name, setName] = useState('')
     const [number, setNumber] = useState('')
     const [address, setAddress] = useState('')
+    const [img_url, setImg_url] = useState('')
 
-    // const handleInputChange = (e) => {
-    //     console.log(e.target.value)
-    //     const { name, number, address } = e.target;
-    //     setMember({ [name]: value, [number]: value, [address]: value })
-    // }
+    
 
     const handleOnSubmit = (e) => {
         e.preventDefault()
-        fetch(`/member/${id}`, {
+        fetch(`/members/${id}`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',
@@ -27,6 +24,7 @@ function EditMember() {
                 name,
                 number,
                 address,
+                img_url,
             }),
         })
             .then((res) => {
@@ -65,8 +63,19 @@ function EditMember() {
 
                     />
 
+                    <label>ImgUrl</label>
+                    <input
+                        type="text"
+                        name="img_url"
+                        value={img_url}
+                        onChange={(event) => setImg_url(event.target.value)}
+
+                    />
+
                     <button type="submit">Edit</button>
                 </form>
+                </div>
+                </div>
                 )
 }
 

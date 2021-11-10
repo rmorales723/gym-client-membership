@@ -24,7 +24,7 @@ function AuthenticatedApp({ currentUser, setCurrentUser }) {
     return (
 
         <div className="App">
-            <Router>
+           
                 <p>Logged in as {currentUser.name}</p>
                 <nav><button onClick={handleLogOut}>Logout</button></nav>
 
@@ -35,19 +35,20 @@ function AuthenticatedApp({ currentUser, setCurrentUser }) {
                             setCurrentUser={setCurrentUser} />
                     </Route>
                     
-                    <Route exact path="/" component={LandingPage} />
+                   
                     <Route exact path="/members">
                         <Members
                             currentUser={currentUser}
                             setCurrentUser={setCurrentUser} />
                     </Route>
-                    <Route exact path="/members/:id/edit">
+                    
+                    <Route exact path="/members/:id/edit" component={EditMember}>
                         <EditMember
                             currentUser={currentUser}
                             setCurrentUser={setCurrentUser} />
                     </Route>
                 </Switch>
-            </Router>
+            
         </div>
     );
 }

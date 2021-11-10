@@ -19,8 +19,8 @@ function LogIn({ setCurrentUser }) {
         if (res.ok) {
           res.json().then((user) => {
 
-          //  setCurrentUser(user);
-            history.push('/')
+            setCurrentUser(user);
+            history.push('/members')
           })
 
         } else {
@@ -49,7 +49,7 @@ function LogIn({ setCurrentUser }) {
             Password:
           </label>
           <input
-            type="text"
+            type="password"
             // name=""
             value={password}
             onChange={(e) => setPassword(e.target.value)}

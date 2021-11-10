@@ -13,7 +13,7 @@ function LogOut({ gym, onLogOut }) {
       {gym ? (
         <div>
           <p>Welcome, {gym.name}!</p>
-          <button onClick={handleLogOut}>Logout</button>
+          {/* <button onClick={handleLogOut}>Logout</button> */}
         </div>
       ) : (
         <Link to="/signup">Click Here to LogOut</Link>
