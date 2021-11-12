@@ -11,7 +11,7 @@ function EditMember() {
     const [address, setAddress] = useState('')
     const [img_url, setImg_url] = useState('')
 
-    
+
 
     const handleOnSubmit = (e) => {
         e.preventDefault()
@@ -21,10 +21,10 @@ function EditMember() {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-                name,
-                number,
-                address,
-                img_url,
+                name: name,
+                number: number,
+                address: address,
+                img_url: img_url
             }),
         })
             .then((res) => {
@@ -74,10 +74,10 @@ function EditMember() {
 
                     <button type="submit">Edit</button>
                 </form>
-                </div>
-                </div>
-                )
+            </div>
+        </div>
+    )
 }
 
 
-    export default EditMember;
+export default EditMember;

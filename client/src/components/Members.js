@@ -35,19 +35,19 @@ class Members extends React.Component {
         fetch(`/members/${e.target.id}`, {
             method: "DELETE"
         })
-        .then((data) => {
-            const filterMembers = this.state.members.filter(member => {
-                console.log(member, "Deleted -----", e.target.id != member.id);
-                return member.id != e.target.id;
-            })
-             return this.setState({
-                members: [...filterMembers], data,
-            })
-        });
+            .then((data) => {
+                const filterMembers = this.state.members.filter(member => {
+                    console.log(member, "Deleted -----", e.target.id != member.id);
+                    return member.id != e.target.id;
+                })
+                return this.setState({
+                    members: [...filterMembers], data,
+                })
+            });
 
     }
 
-     gym = () => {
+    gym = () => {
         this.state.members.gym.map()
     }
 
@@ -76,7 +76,7 @@ class Members extends React.Component {
         return (
             <div>
                 <Link class="btn btn-primary" to="/members/new">New Member</Link>
-                
+
                 <ul>{this.renderMembers()}</ul>
 
             </div>

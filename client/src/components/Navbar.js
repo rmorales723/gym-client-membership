@@ -32,14 +32,12 @@ export const Navbar = () => {
                         <li class="nav-item">
                             <a class="nav-link" href="/members/new">NEW MEMBERS</a>
                         </li>
-                        {/* <li class="nav-item">
-                            <a class="nav-link disabled">Disabled</a>
-                        </li> */}
                     </ul>
                 </div>
             </div>
         </nav>
     )
+        
 }
 
 export default Navbar

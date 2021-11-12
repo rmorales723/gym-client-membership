@@ -16,26 +16,26 @@ function LogIn({ setCurrentUser }) {
       },
       body: JSON.stringify({ username, password }),
     })
-    .then(res => {
-      if (res.ok) {
-        res.json().then((user) => {
+      .then(res => {
+        if (res.ok) {
+          res.json().then((user) => {
 
-          setCurrentUser(user);
-          history.push('/members')
-        })
-        
-      } else {
-        // setCurrentUser = username
-      
-        res.json().then(error => setError(error.error));
-      }
-    })
+            setCurrentUser(user);
+            history.push('/members')
+          })
+
+        } else {
+          // setCurrentUser = username
+
+          res.json().then(error => setError(error.error));
+        }
+      })
   }
-  
+
   return (
     <div className="LogInForm has-text-weight-bold has-text-danger is-size-4 card">
       <form onSubmit={handleSubmit}>
-      {error && <p className="alert alert-danger text-center" role="alert">{error.login}</p>}
+        {error && <p className="alert alert-danger text-center" role="alert">{error.login}</p>}
         <h1></h1>
         <label
           htmlFor="username">Username</label>
