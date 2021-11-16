@@ -6,6 +6,7 @@ KRANK 3.0 is a simple app that allows the current user(Gym) access to the list o
 To get started:
 
 Download this repository by clicking this link https://github.com/rmorales723/krank3.0
+
 Press the code button and copy the SSH key
 Create a folder on your desktop on in your documents
 Open the terminal and CD into where you create the folder and type git clone and paste the key.
