@@ -6,7 +6,11 @@ import { useState } from "react";
 import { browserHistory } from 'react-router';
 
 
-
+// errorRender = () => {
+//     return errors.map(errors => {
+//       return <div className="alert alert-danger" role="alert">{errors}</div>
+//     })
+//   }
 
 class NewMemberForm extends React.Component {
 
@@ -48,6 +52,8 @@ class NewMemberForm extends React.Component {
         }
     }
 
+    
+
 
 
     handleOnSubmit = (event) => {
@@ -55,7 +61,7 @@ class NewMemberForm extends React.Component {
         fetch("/members", this.addMember())
             .then(res => res.json())
             .then((members => {
-                this.props.history.push('/members')
+                this.props. history.push('/members')
                 console.log(Gyms)
             })
 

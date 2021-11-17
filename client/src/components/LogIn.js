@@ -25,9 +25,8 @@ function LogIn({ setCurrentUser }) {
           })
 
         } else {
-          // setCurrentUser = username
-
           res.json().then(error => setError(error.error));
+        
         }
       })
   }

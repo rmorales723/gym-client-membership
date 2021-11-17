@@ -1,7 +1,7 @@
-// import { Button } from 'react-bootstrap';
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useHistory, useParams } from 'react-router'
-import Member from './Member'
+
+
 
 function EditMember() {
     const { id } = useParams()
@@ -10,13 +10,34 @@ function EditMember() {
     const [number, setNumber] = useState('')
     const [address, setAddress] = useState('')
     const [img_url, setImg_url] = useState('')
+    // const [error, setError] = useState('');
 
+    // const displayError = () => {
+    //     return errors.map(error => {
+    //       return <div className="alert alert-danger" role="alert">{error}</div>
+    //     })
+    //   }
 
+    useEffect(() => {
+        upDateMember();
+    }, [])
+    function upDateMember() {
+        fetch(`/members/${id}`)
+        .then(res => res.json())
+        .then(member => {
+            setName(member.name)
+            setNumber(member.number)
+            setAddress(member.address)
+            setImg_url(member.img_url)
+        })
+
+    }
+    
 
     const handleOnSubmit = (e) => {
         e.preventDefault()
         fetch(`/members/${id}`, {
-            method: 'PATCH',
+            method: `PATCH`,
             headers: {
                 'Content-Type': 'application/json',
             },
@@ -27,9 +48,18 @@ function EditMember() {
                 img_url: img_url
             }),
         })
-            .then((res) => {
+        .then(res => {
+            if (res.ok) {
+              res.json().then(() => {
                 history.push('/members')
-            })
+              })
+    
+            // } else {
+            //   res.json().then((errors) => setError(errors.errors));
+            
+            }
+          })
+          
     }
 
     return (
@@ -37,6 +67,7 @@ function EditMember() {
             <div className="form-outsider">
                 <div className="form-container"></div>
                 <form onSubmit={handleOnSubmit} >
+                {/* {errors ? <alert className="alert alert-danger text-center" role="alert">{errors && displayError()}</alert> : <alert></alert>} */}
                     <label>Name</label>
                     <input
                         type="text"

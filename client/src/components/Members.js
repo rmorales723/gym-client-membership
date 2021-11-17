@@ -30,6 +30,8 @@ class Members extends React.Component {
                 }
             })
     }
+    
+    
 
     deleteMember = (e) => {
         fetch(`/members/${e.target.id}`, {

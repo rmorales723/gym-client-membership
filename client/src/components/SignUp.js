@@ -8,7 +8,13 @@ function SignUp(props) {
   const [number, setNumber] = useState("");
   const [address, setAddress] = useState("");
   const [passwordConfirmation, setPasswordConfirmation] = useState("");
+  const [errors, setErrors] = useState("");
 
+  const errorRender = () => {
+    return errors.map(err => {
+      return <div className="alert alert-danger" role="alert">{err}</div>
+    })
+  }
 
   const handleOnSubmit = (event) => {
     event.preventDefault();
@@ -32,7 +38,7 @@ function SignUp(props) {
           })
         } else {
           res.json().then(errors => {
-            console.error(errors)
+            setErrors(errors.errors)
           })
         }
       })
@@ -43,7 +49,8 @@ function SignUp(props) {
       <div className="form-outsider">
         <div className="form-container"></div>
         <form className="new-member-form has-text-weight-bold has-text-black-bis list-group" onSubmit={handleOnSubmit}>
-
+        {errors && errorRender()}
+      
           <h1>Sign Up</h1>
           <label htmlFor="name">Name:</label>
           <input
