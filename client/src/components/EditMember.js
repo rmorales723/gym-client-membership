@@ -10,14 +10,7 @@ function EditMember() {
     const [number, setNumber] = useState('')
     const [address, setAddress] = useState('')
     const [img_url, setImg_url] = useState('')
-    // const [error, setError] = useState('');
-
-    // const displayError = () => {
-    //     return errors.map(error => {
-    //       return <div className="alert alert-danger" role="alert">{error}</div>
-    //     })
-    //   }
-
+    
     useEffect(() => {
         upDateMember();
     }, [])
@@ -53,9 +46,6 @@ function EditMember() {
               res.json().then(() => {
                 history.push('/members')
               })
-    
-            // } else {
-            //   res.json().then((errors) => setError(errors.errors));
             
             }
           })
