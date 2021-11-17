@@ -21,8 +21,7 @@ class ApplicationController < ActionController::API
   end
 
   def current_gym
-     Gym.find(session[:gym_id])
-    # Gym.last
+    current_gym ||= session[:gym_id] && Gym.find_by_id(session[:gym_id])
   end
 end
 

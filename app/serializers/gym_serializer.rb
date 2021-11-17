@@ -1,3 +1,3 @@
 class GymSerializer < ActiveModel::Serializer
-  attributes :id, :name, :number, :address, :email, :members, :username
+  attributes :id, :name, :number, :address, :members
 end

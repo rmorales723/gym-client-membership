@@ -1,5 +1,6 @@
 class GymsController < ApplicationController
-    before_action :current_gym, only: [:update, :destroy]
+    before_action :current_gym, only: [:update, :destroy] 
+    skip_before_action :authorized, only: :create
 
     
     def index
@@ -25,7 +26,7 @@ class GymsController < ApplicationController
 
     def update
        @gym.update!(gym_params)
-       render json: @gym, status: :accepted
+       render json: @gym, status: :ok
     end
     
     def destroy
@@ -41,6 +42,5 @@ class GymsController < ApplicationController
 
     def set_gym
          @gym = Gym.find_by(id: params[:id])
-        #  @gym = Gym.first
     end
 end

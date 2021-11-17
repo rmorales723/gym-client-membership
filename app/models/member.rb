@@ -1,4 +1,4 @@
 class Member < ApplicationRecord
     belongs_to :gym
-    #validates :name, :number, :address, presence: true
+     validates_presence_of :name, :number, :address, :img_url
 end

@@ -3,7 +3,7 @@ class MembersController < ApplicationController
     
 
     def index
-        render json: current_gym, status: :ok
+        render json: current_gym.members, status: :ok
     end
 
     def show
@@ -21,15 +21,18 @@ class MembersController < ApplicationController
        render json: @member, status: :accepted
     end
     
-    def destroy
-        @member.destroy
-        head :no_content, status: :ok
+    
+        def destroy
+            if current_gym
+                current_gym.members.find_by(id: params[:id]).destroy
+                head :no_content
+            end
     end
 
     private
 
     def member_params
-        params.permit(:name, :number, :address)
+        params.permit(:name, :number, :address, :img_url)
     end
 
     def set_member
